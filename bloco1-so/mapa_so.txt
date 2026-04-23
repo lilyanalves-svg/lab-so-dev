@@ -7,16 +7,59 @@
 # explicando a função do diretório com suas próprias palavras.
 
 /proc
-  
+  32  82         devices      iomem     mounts        swaps        vmstat
+10  4   9          device-tree  ioports   net           sys          zoneinfo
+11  42  buddyinfo  diskstats    irq       pagetypeinfo  sysvipc
+12  47  bus        driver       kallsyms  partitions    thread-self
+13  5   cgroups    execdomains  kmsg      sched_debug   timer_list
+14  6   cmdline    fb           loadavg   self          tty
+15  7   consoles   filesystems  locks     slabinfo      uptime
+2   78  cpuinfo    fs           meminfo   softirqs      version
+3   8   crypto     interrupts   misc      stat          vmallocinfo
 
 /proc/cpuinfo
-  
+  hart    : 0
+isa     : rv64acdfimsu
+mmu     : sv48
 
 /proc/meminfo
-  
+  MemTotal:         186324 kB
+MemFree:          177484 kB
+MemAvailable:     177044 kB
+Buffers:               0 kB
+Cached:             3804 kB
+SwapCached:            0 kB
+Active:             3908 kB
+Inactive:           1164 kB
+Active(anon):       1268 kB
+Inactive(anon):        0 kB
+Active(file):       2640 kB
+Inactive(file):     1164 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+Dirty:                 0 kB
+Writeback:             0 kB
+AnonPages:          1304 kB
+Mapped:             2840 kB
+Shmem:                 0 kB
+Slab:               2980 kB
+SReclaimable:        468 kB
+SUnreclaim:         2512 kB
+KernelStack:         160 kB
+PageTables:           68 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:       93160 kB
+Committed_AS:       2336 kB
+VmallocTotal:   67108863 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
 
 /proc/uptime
-  
+ 1946.83 1943.26 
 
 /bin
 
