@@ -22,12 +22,17 @@ retorno: 4
 # PARTE B — Programa C com write() direto
 
 # Cole aqui o código de syscall_direto.c que você escreveu:
-
+#include <unistd.h>
+int main() {
+const char msg[] = "Modo usuario -> kernel via write()\n";
+write(1, msg, sizeof(msg) - 1);
+return 0;
+}
 [código-fonte]
 
 
 # Cole aqui a linha write(...) da saída de strace -o strace.txt ./syscall_direto:
-
+write(1, "Modo usuario -> kernel via write"..., 35) = 35
 [saída do strace]
 
 
@@ -36,7 +41,7 @@ retorno: 4
 # 1. A apresentação mostrou que "instruções de I/O são privilegiadas". 
 #    Com base no que o strace revelou, explique com suas palavras como um programa
 #    de usuário consegue fazer I/O sem executar instruções privilegiadas diretamente.
-
+Ele consegue fazer issso indiretamente através do syscall, que é como se ele fizesse um pedido ao Kernel para executar a instrução privilegiada, o kernel decide se ela é valida para ser executada.
 Resposta 1:
 
 
