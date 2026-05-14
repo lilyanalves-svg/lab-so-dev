@@ -6,37 +6,52 @@
 # Cole abaixo a saída de cada comando e anote o que observou.
 
 echo $$
-  PID do shell: 
+  PID do shell: 48
 
 cat /proc/[PID]/status   (substitua [PID] pelo número real)
-  PID:
-  PPID (processo pai):
-  State:
+  PID: 48
+  PPID (processo pai): 1
+  State: S (sleeping)
 
 cat /proc/[PID]/stat (campos relevantes)
-  Campo 2 — nome do executável:
-  Campo 3 — estado:
-  Campos 14 e 15 — utime / stime:
+  Campo 2 — nome do executável: (sh)
+  Campo 3 — estado: S
+  Campos 14 e 15 — utime / stime: 44 54
 
 ps aux (primeiras linhas)
-  [cole aqui]
-
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.1  1.3   3136  2516 ?        S    22:46   0:00 /bin/sh /sbin/i
+root         2  0.0  0.0      0     0 ?        S    22:46   0:00 [kthreadd]
+root         3  0.0  0.0      0     0 ?        I    22:46   0:00 [kworker/0:0]
+root         4  0.0  0.0      0     0 ?        I<   22:46   0:00 [kworker/0:0H]
+root         5  0.0  0.0      0     0 ?        I    22:46   0:00 [kworker/u2:0]
+root         6  0.0  0.0      0     0 ?        I<   22:46   0:00 [mm_percpu_wq]
+root         7  0.0  0.0      0     0 ?        S    22:46   0:00 [ksoftirqd/0]
 
 # PARTE B — Processo filho
 # Cole a saída dos comandos e responda:
+[root@localhost ~]# kill $FILHO
+[1]+  Terminated              sleep 5m
+[root@localhost ~]# ps -o pid,ppid,stat,cmd
 
 sleep 5m &
-  PID do filho: 
+  PID do filho: 104
 
 cat /proc/[FILHO]/status | grep -E "Pid|PPid|State"
-  [cole aqui]
-
+$FILHO
+ps -o pid,ppid,stat,cmdState:   R (running)
+Pid:    104
+PPid:   47
+TracerPid:      0
 ps -o pid,ppid,stat,cmd (antes do kill)
-  [cole aqui]
-
+ PID  PPID STAT CMD
+   47     1 Ss   sh -l
+  104    47 S    sleep 5m
+  107    47 R+   ps -o pid,ppid,stat,cmd
 ps -o pid,ppid,stat,cmd (depois do kill)
-  [cole aqui]
-
+PID  PPID STAT CMD
+   47     1 Ss   sh -l
+  127    47 R+   ps -o pid,ppid,stat,cmd
 
 # PARTE C — Questões de síntese
 
@@ -45,7 +60,7 @@ ps -o pid,ppid,stat,cmd (depois do kill)
 #    O que esse encadeamento sugere sobre como os processos sao
 #    criados no Linux?
 
-Resposta 1:
+Resposta 1: O processo de criação é hierárquico, um processo vem do outro, assim com esses comandos pe possível rastrear o processo raiz.
 
 
 # 2. O arquivo /proc/<PID>/status mostra o campo State com uma letra
@@ -53,4 +68,4 @@ Resposta 1:
 #    o que aconteceu com o processo filho? O que isso te faz pensar  
 #    sobre a vida de um processo?
 
-Resposta 2:
+Resposta 2: O processo filho passa para o estado zombie, o que me faz pensar que ele não existe mais como um processo, deixando apenas a contribuição que realizou.
