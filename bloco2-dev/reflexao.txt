@@ -9,7 +9,7 @@
 # No shell moderno, qual mecanismo cumpre papel equivalente?
 
 Resposta:
-
+O redirecionamento de entrada e saída e o Pipes. Eles permitem associar arquivos, dispositivos ou outros programas
 # ─────────────────────────────────────────────────────
 
 # ATIVIDADE 7 — Make
@@ -19,11 +19,11 @@ Resposta:
 #    papel? Como o make sabe que não precisa recompilar um arquivo
 #    que não mudou?
 
-Resposta 1:
+Resposta 1: O sistema de dependências e regras. Para saber se um arquivo não precisa ser recompilado, o make compara os timestamps do arquivo de origem com o arquivo de destino. Ele só executa a compilação se o arquivo de origem for mais recente do que o binário já compilado.
 
 
 # 2. O monitor unificava "supervisor, carregador e rotinas de I/O
 #    sob uma interface textual". O que o Makefile unifica no fluxo
 #    de desenvolvimento moderno?
 
-Resposta 2:
+Resposta 2: Todo o ciclo de vida de construção e execução de um projeto.
